@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  HandyBuddy
 //
 //  Created by Winonito Programmer on 16/03/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
     var body: some View {
         TabView {
             SearchView()
@@ -34,29 +34,7 @@ struct ContentView: View {
     }
 }
 
-struct SearchView: View {
-    var body: some View {
-        Text("Pantalla de Búsqueda")
-    }
-}
-struct SavedView: View {
-    var body: some View {
-        Text("Pantalla de Saved")
-    }
-}
-struct ChatView: View {
-    var body: some View {
-        Text("Pantalla de Chat")
-    }
-}
-struct ProfileView: View {
-    var body: some View {
-        Text("Pantalla de Profile")
-    }
-}
-
-
 #Preview {
-    ContentView()
+    MainView()
 }
 

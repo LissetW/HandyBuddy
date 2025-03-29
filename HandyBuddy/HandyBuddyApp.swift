@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct HandyBuddyApp: App {
+    
+    @AppStorage("isRegistered") private var isRegistered = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isRegistered {
+                MainView()
+            } else {
+                RegisterView()
+            }
         }
     }
 }
