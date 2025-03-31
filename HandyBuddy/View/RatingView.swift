@@ -33,7 +33,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             RatingView(rating: 3.0)
-            RatingView(rating: 2.3)
+            RatingView(rating: 3.5)
         }
         .padding()
     }

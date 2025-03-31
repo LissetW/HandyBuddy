@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TechnicianListView: View {
     @StateObject private var viewModel = TechnicianViewModel()
-    var searchText: String // 🔹 Filtrado opcional
+    var searchText: String
 
     var filteredTechnicians: [Technician] {
         if searchText.isEmpty {
@@ -25,7 +25,7 @@ struct TechnicianListView: View {
     var body: some View {
         NavigationView {
             List(filteredTechnicians) { technician in
-                TechnicianRowView(technician: technician) // 🔹 Usa la celda personalizada
+                TechnicianRowView(viewModel: viewModel, technician: technician)
             }
         }
     }
@@ -34,4 +34,3 @@ struct TechnicianListView: View {
 #Preview {
     TechnicianListView(searchText: "")
 }
-

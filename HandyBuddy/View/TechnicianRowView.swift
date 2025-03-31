@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct TechnicianRowView: View {
+    @ObservedObject var viewModel: TechnicianViewModel
     let technician: Technician
-    
+
     var body: some View {
         HStack(spacing: 15) {
             VStack(alignment: .center, spacing: 5) {
@@ -32,21 +33,13 @@ struct TechnicianRowView: View {
                         .foregroundColor(.secondary)
                 }
                 Text(technician.speciality.joined(separator: ", "))
-                
-                if let firstReview = technician.reviews.first {
-                    Text("🗣️ \(firstReview)")
+
+                if let currentReview = viewModel.currentReviews[technician.id] {
+                    Text("🗣️ \(currentReview)")
                         .font(.footnote)
                         .italic()
                         .foregroundColor(.blue)
                         .lineLimit(1)
-                }
-                HStack {
-                    Spacer()
-                    Text("\(technician.servicesCount) services")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
                 }
             }
         }
@@ -55,5 +48,5 @@ struct TechnicianRowView: View {
 }
 
 #Preview {
-    TechnicianRowView(technician: Technician.example)
+    TechnicianRowView(viewModel: TechnicianViewModel(), technician: Technician.example)
 }
