@@ -1,0 +1,55 @@
+# === GENERAL ===
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# === GIT ===
+*.swp
+*~
+.idea/
+*.iml
+
+# === ANDROID ===
+.gradle/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+*.apk
+*.ap_
+*.aar
+
+# Android Studio
+/.idea/
+/*.iml
+/.gradle
+/local.properties
+/.cxx
+/.DS_Store
+
+# === IOS ===
+build/
+DerivedData/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+*.xcuserstate
+
+# Xcode
+*.xcworkspace
+Pods/
+Podfile.lock
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+*.xcodeproj/xcuserdata/
