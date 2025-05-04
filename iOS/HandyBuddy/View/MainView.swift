@@ -15,15 +15,20 @@ struct MainView: View {
                     Image(systemName: "magnifyingglass")
                     Text("Find")
                 }
+            ChatView()
+                .tabItem {
+                    Image(systemName: "message")
+                    Text("Chat")
+                }
             SavedView()
                 .tabItem {
                     Image(systemName: "heart")
                     Text("Saved")
                 }
-            ChatView()
+            HistoryView()
                 .tabItem {
-                    Image(systemName: "message")
-                    Text("Chat")
+                    Image(systemName: "history")
+                    Text("History")
                 }
             ProfileView()
                 .tabItem {
