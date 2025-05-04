@@ -1,2 +1,2 @@
 # HandyBuddy
-Handy Buddy App for iOS
+Handy Buddy App for iOS and Android
