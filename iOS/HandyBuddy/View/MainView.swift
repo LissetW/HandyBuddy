@@ -27,7 +27,7 @@ struct MainView: View {
                 }
             HistoryView()
                 .tabItem {
-                    Image(systemName: "history")
+                    Image(systemName: "list.clipboard.fill")
                     Text("History")
                 }
             ProfileView()
