@@ -10,25 +10,6 @@ Thumbs.db
 .idea/
 *.iml
 
-# === ANDROID ===
-.gradle/
-build/
-captures/
-.externalNativeBuild/
-.cxx/
-local.properties
-*.apk
-*.ap_
-*.aar
-
-# Android Studio
-/.idea/
-/*.iml
-/.gradle
-/local.properties
-/.cxx
-/.DS_Store
-
 # === IOS ===
 build/
 DerivedData/
@@ -44,6 +25,7 @@ xcuserdata/
 *.xcscmblueprint
 *.xccheckout
 *.xcuserstate
+HandyBuddy/GoogleServices-info.plist
 
 # Xcode
 *.xcworkspace
