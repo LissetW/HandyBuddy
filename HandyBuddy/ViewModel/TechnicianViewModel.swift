@@ -7,55 +7,22 @@
 
 import SwiftUI
 
+@MainActor
 class TechnicianViewModel: ObservableObject {
-    @Published var technicians: [Technician] = [
-        Technician(
-            id: UUID(),
-            name: "Ana López",
-            picture: "person.fill",
-            speciality: ["Carpenter"],
-            rating: 4.5,
-            reviews: ["Great job", "Highly recommended"],
-            servicesCount: 95
-        ),
-        Technician(
-            id: UUID(),
-            name: "Carlos Díaz",
-            picture: "person.fill",
-            speciality: ["Painter", "Plumber"],
-            rating: 4.7,
-            reviews: ["Fast and efficient", "Good prices"],
-            servicesCount: 150
-        ),
-        Technician.example
-    ]
-    
-    @Published var currentReviews: [UUID: String] = [:]
-    private var reviewTimers: [UUID: Timer] = [:]
-    
-    init() {
-        startReviewRotation()
-    }
-    
-    private func startReviewRotation() {
-        for technician in technicians {
-            guard !technician.reviews.isEmpty else { continue }
-            
-            currentReviews[technician.id] = technician.reviews.first
-            
-            var reviewIndex = 0
-            
-            let timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
-                reviewIndex = (reviewIndex + 1) % technician.reviews.count
-                DispatchQueue.main.async {
-                    self.currentReviews[technician.id] = technician.reviews[reviewIndex]
-                }
-            }
-            reviewTimers[technician.id] = timer
+    @Published var technicians: [Technician] = []
+
+    func fetchTechnicians() async {
+        guard let url = URL(string: "https://handy-buddy.free.beeceptor.com/technician/all") else {
+            print("URL inválida")
+            return
         }
-    }
-    
-    deinit {
-        reviewTimers.values.forEach { $0.invalidate() }
+
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let decodedTechnicians = try JSONDecoder().decode([Technician].self, from: data)
+            self.technicians = decodedTechnicians
+        } catch {
+            print("rror al obtener técnicos: \(error.localizedDescription)")
+        }
     }
 }

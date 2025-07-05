@@ -16,21 +16,21 @@ struct TechnicianListView: View {
             return viewModel.technicians
         } else {
             return viewModel.technicians.filter { technician in
-                technician.name.localizedCaseInsensitiveContains(searchText) ||
-                technician.speciality.joined(separator: ", ").localizedCaseInsensitiveContains(searchText)
+                (technician.name ?? "").localizedCaseInsensitiveContains(searchText) ||
+                (technician.typeOfWork?.joined(separator: ", ") ?? "").localizedCaseInsensitiveContains(searchText)
             }
         }
     }
 
     var body: some View {
         NavigationView {
-            List(filteredTechnicians) { technician in
-                TechnicianRowView(viewModel: viewModel, technician: technician)
+            List(filteredTechnicians, id: \.id) { technician in
+                TechnicianRowView(technician: technician)
+            }
+            .navigationTitle(NSLocalizedString("technicianList.title", comment: ""))
+            .task {
+                await viewModel.fetchTechnicians()
             }
         }
     }
-}
-
-#Preview {
-    TechnicianListView(searchText: "")
 }

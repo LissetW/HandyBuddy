@@ -13,18 +13,15 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Find technician...", text: $searchText)
+                TextField(NSLocalizedString("search.placeholder", comment: ""), text: $searchText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
 
                 TechnicianListView(searchText: searchText)
             }
-            .navigationTitle("Find technician")
+            .navigationTitle(NSLocalizedString("search.title", comment: ""))
         }
     }
 }
 
-#Preview {
-    SearchView()
-}
 

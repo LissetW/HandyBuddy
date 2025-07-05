@@ -13,33 +13,20 @@ struct MainView: View {
             SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
-                    Text("Find")
+                    Text("main.tab.search")
                 }
+
             ChatView()
                 .tabItem {
                     Image(systemName: "message")
-                    Text("Chat")
+                    Text("main.tab.chat")
                 }
-            SavedView()
-                .tabItem {
-                    Image(systemName: "heart")
-                    Text("Saved")
-                }
-            HistoryView()
-                .tabItem {
-                    Image(systemName: "list.clipboard.fill")
-                    Text("History")
-                }
+
             ProfileView()
                 .tabItem {
                     Image(systemName: "person.crop.circle")
-                    Text("Profile")
+                    Text("main.tab.profile")
                 }
         }
     }
 }
-
-#Preview {
-    MainView()
-}
-

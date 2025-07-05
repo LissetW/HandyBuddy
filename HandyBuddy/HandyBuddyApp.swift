@@ -6,19 +6,25 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct HandyBuddyApp: App {
-    
-    @AppStorage("isRegistered") private var isRegistered = false
-    
+    init() {
+        FirebaseApp.configure()
+    }
+
     var body: some Scene {
         WindowGroup {
-            if isRegistered {
-                MainView()
-            } else {
-                RegisterView()
-            }
+            RootView()
+                .modelContainer(for: [
+                    MessageSessionLocal.self,
+                    MessageLocal.self,
+                    ChatPreviewLocal.self,
+                    TechnicianLocal.self
+                ])
         }
     }
 }
+
+
